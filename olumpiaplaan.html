@@ -1,0 +1,391 @@
+<title>Olümpiaplaan 2032</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one reading column; a yellow "court" hero band, then sections; timeline and lever tables scroll inside their own boxes on phones */
+:root {
+  --bg: #FAF8FC;
+  --surface: #FFFFFF;
+  --fg: #1E1530;
+  --muted: #5E5470;
+  --line: #E4DDEC;
+  --yellow: #F5C518;
+  --yellow-ink: #1E1530;
+  --purple: #6B3FA0;
+  --pink: #E7A6C2;
+  --pink-soft: #F8E6EE;
+  --est: #6B3FA0;
+  --bar: #CFC4DD;
+  --font-display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16111F; --surface: #1F1830; --fg: #EEE9F5; --muted: #ADA3BF; --line: #33294A;
+    --yellow: #F5C518; --yellow-ink: #1E1530; --purple: #B79AE6; --pink: #E59BBB; --pink-soft: #2C1F33;
+    --est: #F5C518; --bar: #4A3D63; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #16111F; --surface: #1F1830; --fg: #EEE9F5; --muted: #ADA3BF; --line: #33294A;
+  --yellow: #F5C518; --yellow-ink: #1E1530; --purple: #B79AE6; --pink: #E59BBB; --pink-soft: #2C1F33;
+  --est: #F5C518; --bar: #4A3D63; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 860px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { text-wrap: balance; line-height: 1.1; margin: 0; }
+h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.9rem, 4.5vw, 2.6rem); letter-spacing: .01em; text-transform: uppercase; }
+h3 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--purple); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--purple); outline-offset: 2px; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* hero */
+.hero { background: var(--yellow); color: var(--yellow-ink); }
+.hero .wrap { padding-block: 40px 36px; display: grid; gap: 18px; }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.6rem, 9vw, 5rem); text-transform: uppercase; line-height: .95; }
+.hero h1 span { display: block; color: #6B3FA0; }
+.hero .lede { max-width: 60ch; font-size: 1.08rem; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: .92rem; }
+.hero-facts b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; line-height: 1.1; }
+
+section { padding-block: 44px 8px; }
+section > .wrap { display: grid; gap: 18px; }
+.lead { color: var(--muted); max-width: 65ch; }
+
+/* key points */
+.points { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.point { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 6px; align-content: start; }
+.point .k { font-family: var(--font-display); font-size: 1.5rem; color: var(--purple); line-height: 1; }
+
+/* ranking chart */
+.chart { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 12px; }
+.row { display: grid; grid-template-columns: minmax(120px, 34%) 1fr; gap: 12px; align-items: center; }
+.row .lbl { font-size: .9rem; min-width: 0; }
+.row .lbl small { display: block; color: var(--muted); font-size: .78rem; }
+.track { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.fill { height: 18px; background: var(--bar); border-radius: 0 4px 4px 0; min-width: 3px; }
+.row.est .fill { background: var(--est); }
+.row.est .lbl { font-weight: 700; }
+.val { font-size: .82rem; color: var(--muted); white-space: nowrap; }
+.chart .note { font-size: .8rem; color: var(--muted); }
+
+/* qualification */
+.slots { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.slot { border-top: 4px solid var(--pink); background: var(--surface); padding: 14px 16px; border-radius: 0 0 8px 8px; display: grid; gap: 4px; align-content: start; }
+.slot b { font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; line-height: 1; }
+.slot.us { border-top-color: var(--purple); background: var(--pink-soft); }
+
+/* tables */
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .92rem; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+td.year { font-family: var(--font-display); font-size: 1.3rem; white-space: nowrap; }
+td .age { display: block; font-family: var(--font-body); font-size: .75rem; color: var(--muted); }
+tr.goal td { background: var(--pink-soft); }
+
+/* pillars */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.tabs button { font: inherit; font-weight: 600; font-size: .9rem; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--purple); border-color: var(--purple); color: var(--bg); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 14px; }
+.panel ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.panel h3 { margin-top: 4px; }
+
+/* steps */
+ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 10px; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 2.2rem 1fr; gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+ol.steps li::before { content: counter(s); font-family: var(--font-display); font-size: 1.5rem; color: var(--purple); line-height: 1.1; }
+ol.steps li span { color: var(--muted); font-size: .9rem; display: block; }
+
+.callout { background: var(--pink-soft); border-radius: 10px; padding: 18px 20px; display: grid; gap: 8px; }
+.contact { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.contact code { font-family: var(--font-body); font-weight: 600; font-size: 1.05rem; background: var(--surface); border: 1px solid var(--line); padding: 6px 10px; border-radius: 6px; user-select: all; }
+.contact button { font: inherit; font-size: .88rem; padding: 7px 12px; border-radius: 6px; border: 1px solid var(--purple); background: transparent; color: var(--purple); cursor: pointer; }
+footer { padding-block: 40px 48px; color: var(--muted); font-size: .82rem; }
+footer ul { padding-left: 1.2em; margin: 8px 0 0; display: grid; gap: 4px; }
+footer a { word-break: break-word; }
+@media (max-width: 480px) { .row { grid-template-columns: 1fr; gap: 4px; } }
+@media (prefers-reduced-motion: no-preference) { .fill { transition: width .6s ease; } }
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">3x3 Estonia BC · tegevusplaan · versioon 1, november 2026</div>
+    <h1>Eesti naised<span>3x3 olümpiale 2032</span></h1>
+    <p class="lede">Eesti esimene 3x3 korvpalliklubi tahab koos Eesti Korvpalliliidu, Eesti Olümpiakomitee ja 5v5 klubidega viia Eesti naiste 3x3 koondise Brisbane'i olümpiamängudele. See leht näitab, kus me täna oleme ja mida selleks järgmise kuue aasta jooksul teha tuleb.</p>
+    <div class="hero-facts num">
+      <div><b>81.</b>Eesti naised FIBA 3x3 riikide edetabelis</div>
+      <div><b>12</b>naiskonda olümpial (LA 2028 süsteem)</div>
+      <div><b>20</b>parimat mängijat loeb riigi punktidesse</div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h2>Plaani tuum</h2>
+    <div class="points">
+      <div class="point"><span class="k">Koondis</span><p>Olümpiale ei pääse klubi, vaid riik. Klubi töö on kasvatada mängijad ja treenerid, kellest Eesti koondis koosneb, ning olla Korvpalliliidu partner.</p></div>
+      <div class="point"><span class="k">20 mängijat</span><p>Riigi koht edetabelis on 20 parima Eesti naise FIBA 3x3 punktide summa. Neli tähte ei piisa. Vaja on vähemalt 20 aktiivset mängijat.</p></div>
+      <div class="point"><span class="k">Eraldi uks</span><p>LA 2028 süsteemis on universaalsuse kvalifikatsiooniturniir riikidele, kes pole varem olümpia 3x3-s mänginud. Eesti sobib sinna.</p></div>
+      <div class="point"><span class="k">Põlvkonnad</span><p>Meie 2010. aastal sündinud tüdrukud on 2032. aastal 22-aastased. Koondis vajab ka tänaseid 18–25-aastaseid naisi.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Kus me täna oleme</h2>
+    <p class="lead">FIBA 3x3 riikide edetabel, naised, seisuga 14. november 2026. Eesti on 81. kohal maailmas ja 28. kohal Euroopas. Maailma 250 parima naismängija seas eestlasi praegu ei ole.</p>
+    <div class="chart num" role="img" aria-label="Eesti 98 284 punkti võrreldes Euroopa 20. ja 15. koha, Läti ja maailma 5. kohaga">
+      <div class="row est"><div class="lbl">Eesti<small>81. maailmas · 28. Euroopas</small></div><div class="track"><div class="fill" style="width:4.9%"></div><span class="val">98 284</span></div></div>
+      <div class="row"><div class="lbl">Euroopa 20. koht<small>Serbia</small></div><div class="track"><div class="fill" style="width:21.3%"></div><span class="val">426 254</span></div></div>
+      <div class="row"><div class="lbl">Euroopa 15. koht<small>Rumeenia</small></div><div class="track"><div class="fill" style="width:33.1%"></div><span class="val">661 653</span></div></div>
+      <div class="row"><div class="lbl">Läti<small>12. maailmas</small></div><div class="track"><div class="fill" style="width:61.9%"></div><span class="val">1 238 116</span></div></div>
+      <div class="row"><div class="lbl">Maailma 5. koht<small>Kanada · otsepilet olümpiale</small></div><div class="track"><div class="fill" style="width:98.8%"></div><span class="val">1 975 206</span></div></div>
+      <p class="note">Ribad samas skaalas (0 – 2 000 000 punkti). Noorte naiste edetabelis on Eesti 85. (42 284 punkti). Allikas: play.fiba3x3.com.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Kuidas olümpiale pääseb</h2>
+    <p class="lead">2032. aasta kvalifikatsioonisüsteemi pole veel avaldatud. Kasutame mudelina LA 2028 süsteemi, kus on 12 naiskonda.</p>
+    <div class="slots">
+      <div class="slot"><b>1</b>Võõrustaja</div>
+      <div class="slot"><b>5</b>Riikide edetabeli järgi (LA 2028 jaoks seis 1.12.2027)</div>
+      <div class="slot us"><b>OQT 1</b>Universaalsuse turniir: riigid, kes pole Tokyos ega Pariisis 3x3-s mänginud. Osalejad valitakse edetabeli järgi. <strong>Eesti tee.</strong></div>
+      <div class="slot"><b>OQT 2</b>Kaks paremat pääsevad, osalejad edetabeli järgi</div>
+      <div class="slot"><b>Q-Series</b>Turniirisari, igast etapist üks koht</div>
+    </div>
+    <p class="lead">Järeldus: ka kvalifikatsiooniturniiridele pääseb edetabeli kaudu. Meie eesmärk ei ole kohe maailma viie parema hulka jõuda, vaid tõusta piisavalt kõrgele, et saada universaalsuse turniirile, ja seal võita.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Teekond 2026–2032</h2>
+    <div class="scroll">
+      <table class="num">
+        <thead><tr><th>Aasta</th><th>Faas</th><th>Peamine eesmärk</th><th>Mõõdik</th></tr></thead>
+        <tbody>
+          <tr><td class="year">2027<span class="age">tüdrukud 17</span></td><td>Vundament</td><td>EYOF 2027 Lignanos (koondise kaudu); igal mängijal FIBA profiil; esimesed välisturniirid</td><td>20+ verifitseeritud Eesti mängijat · 200 000 punkti</td></tr>
+          <tr><td class="year">2028<span class="age">18</span></td><td>Kasv</td><td>Täiskasvanud naised kaasa; Balti ja Põhjamaade turniirikalender; esimene sponsorleping</td><td>30+ aktiivset · 350 000 punkti</td></tr>
+          <tr><td class="year">2029<span class="age">19</span></td><td>Tase üles</td><td>Kõrgema taseme FIBA turniirid; Eesti naiskond Europe Cup'i valikturniiril</td><td>40+ aktiivset · 500 000 punkti</td></tr>
+          <tr><td class="year">2030<span class="age">20</span></td><td>Ettevalmistus</td><td>Täis turniirikalender; 2032. aasta kvalifikatsioonisüsteem teada, plaan selle järgi</td><td>50+ aktiivset · 700 000+ punkti · Euroopa ~15.</td></tr>
+          <tr><td class="year">2031<span class="age">21</span></td><td>Kvalifikatsioon</td><td>Edetabeli lõppsõel; universaalsuse turniir / OQT</td><td>Olümpiapilet</td></tr>
+          <tr class="goal"><td class="year">2032<span class="age">22</span></td><td>Olümpia</td><td>Brisbane</td><td>Eesti naised olümpial</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead">Punktide sihid on meie hinnangud. Ka teised riigid kasvavad, nii et sihid vaadatakse igal aastal üle. Holland vajas maailma tippu jõudmiseks umbes 15 aastat. Kui 2032 ei õnnestu, on samal teel ka EM-id, MM-id ja 2036.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Kuidas tõstame Eesti edetabelikohta</h2>
+    <p class="lead">FIBA sõnul sõltub riigi koht sellest, kui palju mängijaid on ja kui tihti nad mängivad. Punktid tulevad FIBA-s registreeritud turniiridelt, kõrgema taseme turniir annab kordades rohkem. Arvutus on lihtne: kui 20 mängijat kogub keskmiselt 33 000 punkti, teeb see kokku 660 000 punkti ehk Euroopa 15 parema taseme.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Hoob</th><th>Mida teeme</th><th>Mõju</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Profiilid korda</strong></td><td>Iga Eesti naine ja tüdruk, kes mängib 3x3-t, registreerib end play.fiba3x3.com-is ja kinnitab profiili. Ka 5v5 Meistriliiga mängijad ja välismaal õppijad.</td><td>Kiire ja tasuta</td></tr>
+          <tr><td><strong>Iga turniir FIBA süsteemi</strong></td><td>Kõik Eesti 3x3 turniirid registreeritakse FIBA-s ja tulemused laaditakse üles.</td><td>Rohkem punkte samade mängudega</td></tr>
+          <tr><td><strong>Täiskasvanud naised</strong></td><td>18+ naised mängivad suvel 3x3 turniire. Naiste edetabelisse lähevad kõigi vanuste punktid.</td><td>Suurim kiire mõju</td></tr>
+          <tr><td><strong>Kõrgema taseme turniirid</strong></td><td>Turniirid Lätis, Leedus, Poolas ja Hollandis.</td><td>Keskmine kulu, suur mõju</td></tr>
+          <tr><td><strong>Turniir Tallinnasse</strong></td><td>FIBA-s registreeritud turniir, kuhu kutsume naaberriikide tiimid. Pikemas plaanis taotleme kõrgema taseme FIBA etappi.</td><td>Punktid koju, samas turundussündmus</td></tr>
+          <tr><td><strong>Koondis</strong></td><td>Koos EKL-iga: Europe Cup'i valikturniirid ja Nations League.</td><td>Palju mänge ja punkte</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Viis tööliini</h2>
+    <div class="tabs" role="tablist" aria-label="Tööliinid">
+      <button role="tab" id="t-trenn" aria-controls="p-trenn" aria-selected="true">Treening</button>
+      <button role="tab" id="t-voist" aria-controls="p-voist" aria-selected="false">Võistlused</button>
+      <button role="tab" id="t-treener" aria-controls="p-treener" aria-selected="false">Treenerid</button>
+      <button role="tab" id="t-turundus" aria-controls="p-turundus" aria-selected="false">Turundus</button>
+      <button role="tab" id="t-raha" aria-controls="p-raha" aria-selected="false">Rahastus</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-trenn" aria-labelledby="t-trenn">
+      <h3>Aasta tsükkel koos 5v5 klubidega</h3>
+      <ul>
+        <li><strong>Sept–apr (5v5 hooaeg):</strong> mängijad treenivad oma klubis, meil 1 kord nädalas 3x3 trenn ja üldfüüsiline plaan, talvel 1–2 sisesaali turniiri.</li>
+        <li><strong>Mai:</strong> üleminek, 2–3 trenni nädalas.</li>
+        <li><strong>Juuni–aug (3x3 hooaeg):</strong> 3–4 trenni nädalas, laagrid ja turniirid nädalavahetustel.</li>
+        <li><strong>Sept:</strong> puhkus ja testid.</li>
+      </ul>
+      <h3>Mida 3x3-s treenime</h3>
+      <ul>
+        <li>1 vs 1 rünnak ja kaitse</li>
+        <li>Kaugvise (kahepunktiline) ja vise pärast põrget</li>
+        <li>Kiire otsustamine 12-sekundilise rünnakuaja juures, kiire üleminek kaitsest rünnakusse</li>
+        <li>Kehakontakt, jõud ja vastupidavus (3–4 mängu päevas)</li>
+        <li>Iseseisvus ja suhtlus väljakul, sest treener mängu ajal juhendada ei saa</li>
+      </ul>
+      <h3>Vanusegrupid</h3>
+      <p>TU13 mängulust ja põhioskused · TU15 tehnika ja esimesed turniirid · TU18 võistlussport ja FIBA edetabel · 18+ täiskasvanute tase ja koondis. Testid kaks korda aastas.</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-voist" aria-labelledby="t-voist" hidden>
+      <h3>Iga turniir peab andma FIBA punkte, kogemust või mõlemat</h3>
+      <ul>
+        <li><strong>Eesti:</strong> FIBA-s registreeritud turniirid ja Eesti meistrivõistlused.</li>
+        <li><strong>Oma turniir:</strong> 1–2 FIBA-s registreeritud turniiri aastas Tallinnas.</li>
+        <li><strong>Balti ja Põhjamaad:</strong> Läti, Leedu, Soome ja Rootsi turniirid, kuhu on odav sõita.</li>
+        <li><strong>Euroopa:</strong> Holland, FIBA noorteturniirid, EYOF.</li>
+        <li><strong>Koondis:</strong> EKL-i valik- ja koondisevõistlused.</li>
+      </ul>
+      <h3>2027: peamine siht EYOF</h3>
+      <p>Euroopa noorte olümpiafestival, Lignano Sabbiadoro, 24.07–01.08.2027. 3x3 on kavas. 2025. aastal osales 16 naiskonda, gruppideks jaotati noorte edetabeli järgi ja lubatud olid kaks vanimat aastakäiku. Kui 2027 kehtib sama reegel, saavad osaleda 2009. ja 2010. aastal sündinud. Valikud teeb EOK koos EKL-iga.</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-treener" aria-labelledby="t-treener" hidden>
+      <h3>Treenerid kasvavad koos mängijatega</h3>
+      <ul>
+        <li><strong>Eesti treenerikutse:</strong> vähemalt üks 5. taseme treener. See on ühtlasi riikliku treeneri tööjõukulu toetuse tingimus.</li>
+        <li><strong>3x3 koolitus:</strong> koos EKL-i ja FIBA-ga.</li>
+        <li><strong>Holland:</strong> meie treenerid käivad Hollandi laagrites õppimas, Hollandi treenerid juhendavad laagreid Tallinnas. Partnerid: Maksim Kovacevic (Hollandi naiste 3x3 koondise peatreener), Jesper Jobse ja Maxi Sellering (3x3 UNITES).</li>
+        <li><strong>Treenerid Eestis:</strong> Siim Raudla, Howard Frier, Chris Moore, Kerdu Arbet-Lenear.</li>
+        <li><strong>Vabatahtlikud:</strong> turniiride korraldamine, lauakohtunikud, FIBA tulemuste sisestamine.</li>
+      </ul>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-turundus" aria-labelledby="t-turundus" hidden>
+      <h3>Lugu: Eesti esimene 3x3 klubi viib tüdrukud olümpiale</h3>
+      <ul>
+        <li><strong>Tüdrukud ja vanemad:</strong> põnev, rahvusvaheline tee tippu.</li>
+        <li><strong>5v5 klubid:</strong> me ei võta mängijaid ära, vaid aitame neil areneda.</li>
+        <li><strong>Sponsorid:</strong> nähtavus ja positiivne lugu naistest, noortest ja olümpiast koos mõõdetavate tulemustega.</li>
+        <li><strong>Kanalid:</strong> uus kakskeelne veebileht, Instagram ja TikTok, pressiteated iga rahvusvahelise tulemuse kohta, oma turniir Tallinnas.</li>
+        <li><strong>Aasta rütm:</strong> talvel sponsorpakett ja taotlused, kevadel kohtumised, suvel sisu igal nädalal, sügisel hooaja kokkuvõte.</li>
+      </ul>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-raha" aria-labelledby="t-raha" hidden>
+      <h3>Alustame kindlatest allikatest ja kasvame koos tulemustega</h3>
+      <ul>
+        <li><strong>Tulumaksusoodustusega ühingute nimekiri (EMTA):</strong> ettevõtted saavad annetada maksuvabalt.</li>
+        <li><strong>Treeneri tööjõukulu toetus:</strong> riik maksab osa 5. taseme treeneri palgast.</li>
+        <li><strong>Tallinna linna sporditoetused</strong> ja <strong>Eesti Kultuurkapitali</strong> kehakultuuri ja spordi sihtkapital.</li>
+        <li><strong>Erasmus+ Sport:</strong> koostööprojektid Hollandi partneritega.</li>
+        <li><strong>EKL ja EOK:</strong> koondise ja olümpiaettevalmistuse toetus.</li>
+        <li><strong>Sponsorid, osalustasud, laagrid ja ühisrahastus.</strong></li>
+      </ul>
+      <p>Riiklikud 3x3 programmid maksavad suurtes riikides miljon eurot aastas või rohkem. Seda ei pea klubi üksi kokku saama: osa sellest tuleb koondise kaudu.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Eeskuju: Rootsi</h2>
+    <p class="lead">Rootsi korvpalliliit käivitas 2026. aastal 3x3 koondiste programmi, mille siht on samuti olümpia 2032. Nende naiskond pääses juba esimesel aastal Europe Cup'ile.</p>
+    <div class="points">
+      <div class="point"><span class="k">FIBA Plus</span><p>FIBA aitas Rootsi liidul koostada 3x3 arengukava aastateks 2026–2028. Eesti Korvpalliliit saab sama programmi taotleda.</p></div>
+      <div class="point"><span class="k">Meeskond</span><p>Peatreener, 3x3 spordijuht, füsioterapeut ja mentor Hollandist.</p></div>
+      <div class="point"><span class="k">Turniirisari</span><p>Koondis valitakse oma suvise turniirisarja etappidelt. Rootsi taotles ka kõrgema taseme FIBA turniire koju.</p></div>
+      <div class="point"><span class="k">Järjepidevus</span><p>Rootsi 2018. aasta programm vaibus ja tuli otsast alustada. Kaheksa-aastane plaan vajab inimesi ja raha, kes ei kao pärast esimest suve.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Esimesed 90 päeva</h2>
+    <p class="lead">November 2026 kuni veebruar 2027.</p>
+    <ol class="steps">
+      <li><div><strong>Kohtumine Eesti Korvpalliliiduga</strong><span>EYOF 2027 3x3, koondise plaanid, koostöö</span></div></li>
+      <li><div><strong>Kõigile mängijatele play.fiba3x3.com profiil</strong><span>Ilma selleta punktid riigi edetabelisse ei lähe</span></div></li>
+      <li><div><strong>EKL-ile ettepanek taotleda FIBA Plus programmi</strong><span>Rootsi eeskujul riiklik 3x3 arengukava</span></div></li>
+      <li><div><strong>Talvised FIBA-s registreeritud turniirid</strong><span>EYOF valik võib tulla kevadise edetabeli järgi</span></div></li>
+      <li><div><strong>Tulumaksusoodustuse taotlus ja spordiregister</strong><span>Toetuste ja annetuste eeltingimused</span></div></li>
+      <li><div><strong>Kõne Hollandi partneritega</strong><span>2027. aasta suve turniirid, laager, treenerite praktika</span></div></li>
+      <li><div><strong>Kontakt Rootsiga</strong><span>Sparringud, Põhjamaade meistrivõistlused, ühine laager</span></div></li>
+      <li><div><strong>Kultuurkapitali taotlus ja sponsorpakett</strong><span>Raha 2027. aasta välisturniirideks</span></div></li>
+      <li><div><strong>2027. aasta hooaja kalender</strong><span>Treenerid, vanemad ja 5v5 klubid teavad plaani ette</span></div></li>
+      <li><div><strong>Treenerikutse plaan</strong><span>Kes ja millal saab 5. taseme kutse</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="callout">
+      <h3>Liitu või toeta</h3>
+      <p>Otsime mängijaid, 5v5 klubisid, treenereid, vabatahtlikke ja toetajaid. Kirjuta meile:</p>
+      <div class="contact">
+        <code id="mail">3x3estonia@gmail.com</code>
+        <button type="button" id="copy">Kopeeri aadress</button>
+      </div>
+      <p>3x3 Estonia BC MTÜ · registrikood 80650485 · <a href="https://3x3estonia.com" target="_blank" rel="noopener">3x3estonia.com</a></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Allikad</strong>
+    <ul>
+      <li>FIBA 3x3 riikide edetabel, naised ja noored naised, 14.11.2026 (play.fiba3x3.com)</li>
+      <li><a href="https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/BK3-LA28-Qualification-System.pdf" target="_blank" rel="noopener">LA28 3x3 kvalifikatsioonisüsteem (IOC)</a></li>
+      <li><a href="https://about.fiba.basketball/en/news/new-24-month-federation-ranking-for-3x3-basketball-begins-today" target="_blank" rel="noopener">FIBA: 24-kuuline riikide edetabel</a></li>
+      <li><a href="https://eyof2027.org/en/sport/3x3-basketball/" target="_blank" rel="noopener">EYOF 2027: 3x3 korvpall</a></li>
+      <li><a href="https://www.olympic.sk/sites/default/files/field_media_file/2025-07/EYOF%20Skopje%202025%20-%203x3%20BASKETBALL%20Technical%20Manual_v2.pdf" target="_blank" rel="noopener">EYOF Skopje 2025, 3x3 võistlusmäärus</a></li>
+      <li><a href="https://www.basket.se/nyheter/ny-satsning-pa-3x3-landslagen/" target="_blank" rel="noopener">Rootsi korvpalliliit: uus 3x3 koondiste programm</a></li>
+      <li><a href="https://q2032.au/plans/venues-and-villages/south-bank-piazza" target="_blank" rel="noopener">Brisbane 2032: South Bank Piazza</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function show(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(t); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        show(n); n.focus();
+      }
+    });
+  });
+  show(tabs[0]);
+  var btn = document.getElementById('copy');
+  btn.addEventListener('click', function () {
+    var text = document.getElementById('mail').textContent;
+    var done = function () { btn.textContent = 'Kopeeritud'; };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('mail'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Aadress valitud';
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
